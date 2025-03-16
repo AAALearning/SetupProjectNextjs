@@ -13,7 +13,7 @@ Dùng server actions
 Dùng redirect, rewrites (đổi page mà url giữ nguyên), đổi url mà k đổi page, prefetch
 Dùng dynamic import
 Dùng permanentRedirect
-Dùng layout, template
+Dùng layout, template, default, slots, loading
 
 
 
@@ -92,5 +92,6 @@ Khi đó client hiện tại sẽ re-render luôn, các client khác sẽ bị h
 
 
 
+opengraph-image.png
 
-Dùng default.js
+
