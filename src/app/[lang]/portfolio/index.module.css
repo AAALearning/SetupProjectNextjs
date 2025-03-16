@@ -1,0 +1,8 @@
+.container {
+  --container-max-width: 106.25rem; /* 340 - 1700 */
+
+  position: relative;
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+  container-type: inline-size;
+}

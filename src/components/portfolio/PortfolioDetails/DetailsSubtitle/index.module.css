@@ -1,0 +1,10 @@
+.line {
+  @apply h-[1.5px] w-full;
+  background-color: var(--_primary-color);
+}
+
+.subtitle {
+  @apply font-bold py-[1rem] tracking-[0.3rem];
+  color: var(--_primary-color);
+  font-size: var(--font-xl);
+}

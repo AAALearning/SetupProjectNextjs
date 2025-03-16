@@ -1,0 +1,61 @@
+.content {
+  --_min-left-section: 31.25rem;
+  --_primary-color: rgb(51, 62, 80);
+  --_light-text-color: rgb(119, 120, 123);
+  --_item-light-background: rgb(188, 190, 192);
+  --_left-section-bg: rgb(239, 239, 240);
+
+  display: grid;
+  container-type: inline-size;
+
+  @container (inline-size > calc(31.25rem*2)) {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.content__left {
+  background-color: var(--_left-section-bg);
+  padding: clamp(2rem, calc(1.5rem + 2.353vw), 4rem); 
+}
+
+.content__left--avatar {
+  @apply w-full px-[10%];
+  padding-bottom: clamp(2rem, calc(1.5rem + 2.353vw), 4rem);
+
+  @container (calc(31.25rem*2) > inline-size > calc(31.25rem*1.2)) {
+    display: none;
+  }
+
+  figure {
+    @apply relative w-full aspect-square overflow-hidden;
+    border-radius: 50%;
+  }
+}
+
+.content__left--list-item {
+  h3:first-child {
+    font-size: var(--font-xl);
+    color: var(--_light-text-color);
+    text-wrap: auto;
+  }
+  
+  :nth-child(2) {
+    @apply h-[10px] w-full;
+    background: linear-gradient(
+      to right, 
+      var(--_light-text-color) calc(1%*var(--_content-item-level)), 
+      var(--_item-light-background) calc(1%*var(--_content-item-level))
+    );
+  }
+}
+
+.content__right {
+  @apply p-[2rem] pt-[4rem];
+  container-type: inline-size;
+}
+
+.content__right--aboutme {
+  @apply pt-[2rem] pb-[3rem];
+  font-size: var(--font-lg);
+  color: var(--_light-text-color);
+}

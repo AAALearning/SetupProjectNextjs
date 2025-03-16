@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: white;
+  --foreground: black;
+
+  --font-xs: clamp(0.625rem, 0.5417rem + 0.2667vw, 0.875rem);
+  --font-sm: clamp(0.875rem, 0.8333rem + 0.1333vw, 1rem);
+  --font-base: clamp(1rem, calc(0.958rem + 0.133vw), 1.125rem);
+  --font-lg: clamp(1.125rem, 1.0833rem + 0.1333vw, 1.25rem);
+  --font-xl: clamp(1.25rem, 1.1667rem + 0.2667vw, 1.5rem);
+  --font-2xl: clamp(1.25rem, 1.1667rem + 0.2667vw, 1.5rem);
+  --font-3xl: clamp(1.5rem, 1.375rem + 0.4vw, 1.875rem);
+  --font-6xl: clamp(3.125rem, 2.8333rem + 0.9333vw, 4rem);
+}
+
+@view-transition {
+  navigation: auto;
+}
+::view-transition-group(root) {
+  animation-duration: 500ms;
+}
+:where(:root) {
+  text-rendering: optimizeLegibility;
+}
+:where(*:not(dialog, [popover])) {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+  -webkit-touch-callout: none;
+  interpolate-size: allow-keywords;
+  overscroll-behavior: contain;
+  min-height: 100%;
+  width: 100%;
+}
+body{
+  min-height: 100%;
+  width: 100%;
+  font-size: var(--font-sm);
+}
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  shape-margin: 1rem;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+a {
+  text-decoration: none;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+p {
+  cursor: text;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+h1,h2,h3,h4,h5,h6 { text-wrap: balance; }
+p { text-wrap: pretty; }
+

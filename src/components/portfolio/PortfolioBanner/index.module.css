@@ -1,0 +1,99 @@
+.banner {
+  --_background-top: rgb(65, 64, 66);
+  --_text-gray: rgb(210, 210, 210);
+  --_line-color: rgba(from var(--_text-gray) r g b / 0.5);
+  --_text-color: white;
+  --_title-spacing: 0.5rem;
+  --_contact-item-min-width: 15.625rem;
+
+  background-color: var(--_background-top);
+  padding-inline: clamp(1rem, calc(0.5rem + 2.353vw), 3rem);
+  padding-top: clamp(1rem, calc(0.5rem + 2.353vw), 3rem);
+  padding-bottom: clamp(1rem, calc(0.875rem + 0.588vw), 1.5rem);
+  container-type: inline-size;
+}
+
+.banner__smalltitle {
+  @apply text-center font-bold;
+  color: var(--_text-gray);
+  font-size: var(--font-3xl);
+  letter-spacing: var(--_title-spacing);
+}
+
+.banner__bigTitle {
+  @apply text-center font-bold py-[1rem];
+  font-size: var(--font-6xl);
+  letter-spacing: var(--_title-spacing);
+  color: var(--_text-color);
+}
+
+.banner__line {
+  @apply h-[1px] grow;
+  background-color: var(--_line-color);
+}
+
+.banner__contacts {
+  @apply grid items-center justify-around;
+  grid-template-columns: repeat(auto-fit, minmax(var(--_contact-item-min-width), 1fr));
+  
+  .banner__contacts--item{
+    @apply flex flex-col items-center relative h-full gap-[1rem];
+    padding: clamp(1rem, calc(0.75rem + 1.176vw), 2rem);
+    > p {
+      @apply text-center text-balance; 
+      color: var(--_text-gray);
+      font-size: var(--font-xl);
+      word-break: break-word;
+    }
+  }
+
+  @container (calc(15.625rem*2) > inline-size) {
+    .banner__contacts--item:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      width: 80%;
+      transform: translateX(10%);
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--_line-color);
+    }
+  }
+
+  @container (calc(15.625rem*4) > inline-size > calc(15.625rem*2)) {
+    grid-template-columns: repeat(2, 1fr);
+    .banner__contacts--item:is(:first-child,:nth-child(3))::after {
+      content: "";
+      position: absolute;
+      height: 60%;
+      transform: translateY(30%);
+      width: 1px;
+      right: 0;
+      top: 0;
+      background-color: var(--_line-color);
+    }
+    .banner__contacts--item:is(:nth-child(1),:nth-child(2))::before {
+      content: "";
+      position: absolute;
+      width: 80%;
+      transform: translateX(10%);
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--_line-color);
+    }
+  }
+
+  @container (inline-size > calc(15.625rem*4)) {
+    .banner__contacts--item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      height: 80%;
+      transform: translateY(10%);
+      width: 1px;
+      right: 0;
+      top: 0;
+      background-color: var(--_line-color);
+    }
+  }
+}
