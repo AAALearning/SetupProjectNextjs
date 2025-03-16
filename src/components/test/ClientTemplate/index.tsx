@@ -9,7 +9,7 @@ const ClientTemplate = () => {
       <div>{count}</div>
       <button onClick={() => setCount(count + 1)}>+</button>
     </div>
-  )
-}
+  );
+};
 
 export default ClientTemplate;
