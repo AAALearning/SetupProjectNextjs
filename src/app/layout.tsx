@@ -1,4 +1,4 @@
-import { ReactScan } from "@/components/common/ReactScan";
+import Script from "next/script";
 import "./globals.css";
 
 export default function RootLayout({
@@ -8,9 +8,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <ReactScan/> */}
       <head>
         <link rel="preload" as="image" href="../favicon.ico" />
+        {/* Phải dùng Script tránh lỗi */}
+        <Script crossOrigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js"></Script>
       </head>
       <body>{children}</body>
     </html>
