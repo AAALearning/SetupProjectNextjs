@@ -13,7 +13,10 @@ Dùng server actions
 Dùng redirect, rewrites (đổi page mà url giữ nguyên), đổi url mà k đổi page, prefetch
 Dùng dynamic import
 Dùng permanentRedirect
-Dùng layout, template, default, slots, loading
+Dùng layout, template, default, slots, loading, twitter-image.png, opengraph-image.alt.txt
+Dùng react compiler
+Dùng Form, useActionState
+Dùng route handler
 
 
 
@@ -82,7 +85,7 @@ K dùng useCallback vì useCallback k nhận các hàm ở ngoài do k rõ ràng
 - useOptimistic k thể dùng với debounce vì gọi hàm debounce trong startTransition thì ra ngoài sẽ k thực hiện ngay, debounce nó chờ timeout mà, thành ra optimisticsValue k compare và update.
 Nhưng ta có thể tự implement optimistic debounce được mà: dùng 1 biến state lưu giá trị, khi gọi hàm thì update state local luôn, thực hiện side effect xong sẽ update lần nữa, nếu fail thì viết update state trong catch quay lại giá trị cũ thôi. K cần dùng useOptimistics.
 
-->*** Bản chất luồng re-render trong nextjs:
+-->*** Bản chất luồng re-render trong nextjs:
 - Client có thể tương tác với server qua api route handler, qua server actions từ form, hoặc gọi trực tiếp hàm của server cũng được kìa (coi nó cũng là server actions)
 - Khi gọi trực tiếp hàm của server hoặc dùng server actions, mà đổi data trong cookies dù có liên quan hay không cũng sẽ render lại pages, kể cả khi component k đọc cookie gì. Còn nếu chỉ get cookie hay call external api, db thì sẽ k render lại.
 Nếu chủ động luôn muốn re-render lại thì dùng revalidatePath. Nếu chủ động tương tác server mà k muốn re-render lại thì phải gọi fetch route handler thử.
@@ -92,6 +95,9 @@ Khi đó client hiện tại sẽ re-render luôn, các client khác sẽ bị h
 
 
 
-opengraph-image.png
+-> Lỗi css bundle không dùng được các feature mới:
+- Bỏ --turbopack. Nó có tốc độ build cực nhanh, nhưng bundle size k giảm, thường chỉ dùng cho development. Đôi khi lỗi phải bỏ đi mới dùng được => k nên
+- Dùng <style jsx> thì chạy được.
+
 
 

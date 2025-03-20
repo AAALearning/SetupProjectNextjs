@@ -25,6 +25,7 @@
     "@next/env": "^15.2.2",
     "@supabase/ssr": "^0.5.2",
     "@types/lodash": "^4.17.16",
+    "babel-plugin-react-compiler": "^19.0.0-beta-3229e95-20250315",
     "drizzle-orm": "^0.40.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",

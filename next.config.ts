@@ -54,6 +54,7 @@ const nextConfig: NextConfig = {
   experimental: {
     // ppr: "incremental",
     viewTransition: true,
+    reactCompiler: true,
   },
   // assetPrefix: "https://cdn.mydomain.com", // Nếu host static lên CDN
 };
