@@ -1,10 +1,27 @@
 {
-  "portfolio": {
-    "metadata": {
-      "description": "Sơ yếu lý lịch"
-    },
-    "banner": {
-      "job": "LAP TRINH FULL STACK"
-    }
-  }
+  "portfolio.button.changelang": "Ngôn ngữ",
+  "portfolio.metadata.description": "Hồ sơ năng lực của tôi",
+  "portfolio.banner.title": "RYAN NGUYEN",
+  "portfolio.banner.job": "LẬP TRÌNH VIÊN FULL STACK",
+  "portfolio.skills": "KỸ NĂNG",
+  "portfolio.languages": "NGÔN NGỮ",
+  "portfolio.aboutme.name": "VỀ TÔI",
+  "portfolio.aboutme.details": "Với 5 năm kinh nghiệm làm Lập trình viên Frontend (HTML, CSS, JS, ReactJS) và thêm 3 năm trong Phát triển Backend, tôi sở hữu bộ kỹ năng vững chắc kết nối cả hai khía cạnh của phát triển web.",
+  "portfolio.workexp": "KINH NGHIỆM LÀM VIỆC",
+  "portfolio.workexp.phase1.place": "ĐẠI HỌC HÀ NỘI",
+  "portfolio.workexp.phase1.name": "LẬP TRÌNH VIÊN FRONTEND",
+  "portfolio.workexp.phase1.details.1": "Thành thạo MERN stack thông qua các dự án thực tế tại trường đại học.",
+  "portfolio.workexp.phase1.details.2": "Phát triển các ứng dụng Web3 sáng tạo sử dụng Solidity với vai trò Lập trình viên Full Stack trong các dự án cuối khóa.",
+  "portfolio.workexp.phase2.name": "THỰC TẬP",
+  "portfolio.workexp.phase2.details.1": "Lập trình frontend cho website: https://nft-app.trava.finance",
+  "portfolio.workexp.phase2.details.2": "Tạo frontend cho nhiều dự án outsource sử dụng NextJS.",
+  "portfolio.workexp.phase2.details.3": "Tạo server để crawl dữ liệu từ blockchain.",
+  "portfolio.workexp.phase3.name": "LẬP TRÌNH VIÊN BACKEND",
+  "portfolio.workexp.phase3.details.1": "Dẫn đầu phát triển backend sử dụng framework ASP.NET cho một dự án quy mô lớn, đảm bảo hiệu suất mạnh mẽ và khả năng mở rộng.",
+  "portfolio.workexp.phase3.details.2": "Thiết kế và triển khai cơ sở dữ liệu SQL Server để tối ưu hóa quản lý và tính toàn vẹn dữ liệu.",
+  "portfolio.education.name": "HỌC VẤN",
+  "portfolio.education.phase1.place": "Đại học Bách khoa Hà Nội",
+  "portfolio.education.phase1.title": "CỬ NHÂN",
+  "portfolio.education.phase1.details.1": "Tốt nghiệp loại xuất sắc ngành Kỹ thuật Công nghệ thông tin.",
+  "portfolio.other": "KHÁC"
 }

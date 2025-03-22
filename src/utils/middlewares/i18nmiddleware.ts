@@ -1,27 +1,37 @@
 import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
-import { CustomMiddleware } from "./chain";
+import { langs as locales } from "@/utils/dictionaries";
 
-const locales = ["en", "vi"];
-const paths = ["/portfolio"];
+const paths = ["portfolio"];
+
+function isI18nUrl(url: string) {
+  const regex = new RegExp(`^\/([^\/]+\/)?(${paths.join("|")})`);
+  return regex.test(url);
+}
 
 function getLocale(request: NextRequest) {
   const cookieLang = request.cookies.get("lang")?.value ?? "";
   if (locales.includes(cookieLang)) return cookieLang;
-  const lang = request.headers.get("accept-language");
-  if (lang == null) {
-    return locales[0];
-  }
-  return lang.split(",")[0]?.split("-")?.[0] ?? locales[0];
+  const lang = request.headers.get("accept-language"); // Default of user browser, có thể dùng lib negotiator để lấy
+  return lang?.split(",")[0]?.split("-")?.[0] ?? locales[0];
 }
 
-export function withI18nMiddleware(middleware: CustomMiddleware) {
-  return async (request: NextRequest, event: NextFetchEvent, response: NextResponse) => {
+export default function withI18nMiddleware(
+  next: (request: NextRequest, event: NextFetchEvent) => NextResponse
+): (request: NextRequest, event: NextFetchEvent) => NextResponse {
+  return (request: NextRequest, event: NextFetchEvent) => {
     const { pathname } = request.nextUrl;
-    if (!paths.some((p) => pathname.startsWith(`${p}/`) || pathname == p)) {
-      return middleware(request, event, response);
+    if (!isI18nUrl(pathname)) {
+      return next(request, event);
     }
-    const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
-    if (pathnameHasLocale) return middleware(request, event, response);
+    const localeInPathName = locales.find((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
+    if (localeInPathName) {
+      const response = next(request, event);
+      response.cookies.set("lang", localeInPathName, {
+        sameSite: "strict",
+        maxAge: 31536000,
+      });
+      return response;
+    }
     const locale = getLocale(request);
     request.nextUrl.pathname = `/${locale}${pathname}`;
     return NextResponse.redirect(request.nextUrl);

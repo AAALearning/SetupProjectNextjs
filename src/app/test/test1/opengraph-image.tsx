@@ -11,7 +11,7 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image() {
-  const interSemiBold = await readFile(join(process.cwd(), "src/app/assets/fonts/Montserrat_variablefonts.ttf"));
+  const bytesizedBuffer = await readFile(join(process.cwd(), "src/assets/fonts/Bytesized-Regular.ttf"));
 
   return new ImageResponse(
     (
@@ -33,8 +33,8 @@ export default async function Image() {
       ...size,
       fonts: [
         {
-          name: "Montserrat",
-          data: interSemiBold,
+          name: "Bytesized",
+          data: bytesizedBuffer,
           style: "normal",
           weight: 400,
         },

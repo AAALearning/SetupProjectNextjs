@@ -1,24 +1,19 @@
-import { NextMiddlewareResult } from "next/dist/server/web/types";
-import { NextResponse } from "next/server";
-import type { NextFetchEvent, NextRequest } from "next/server";
+import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
 
 export type CustomMiddleware = (
-  request: NextRequest,
-  event: NextFetchEvent,
-  response: NextResponse
-) => NextMiddlewareResult | Promise<NextMiddlewareResult>;
+  next: (request: NextRequest, event: NextFetchEvent) => NextResponse
+) => (request: NextRequest, event: NextFetchEvent) => NextResponse;
 
-type MiddlewareFactory = (middleware: CustomMiddleware) => CustomMiddleware;
+function defaultMiddleware(request: NextRequest, event: NextFetchEvent) {
+  return NextResponse.next();
+}
 
-export function chain(functions: MiddlewareFactory[], index = 0): CustomMiddleware {
-  const current = functions[index];
-
-  if (current) {
-    const next = chain(functions, index + 1);
-    return current(next);
+export default function chain(
+  middlewares: CustomMiddleware[]
+): (request: NextRequest, event: NextFetchEvent) => NextResponse {
+  let cachedFunc = defaultMiddleware;
+  for (let i = middlewares.length - 1; i >= 0; i--) {
+    cachedFunc = middlewares[i](cachedFunc);
   }
-
-  return (request: NextRequest, event: NextFetchEvent, response: NextResponse) => {
-    return response;
-  };
+  return cachedFunc;
 }

@@ -6,10 +6,14 @@ import ShowSearchParams from "@/components/test/ShowSearchParams";
 import TestForm from "@/components/test/TestForm";
 import ViewTransitionTest from "@/components/test/ViewTransitionTest";
 import { sleep } from "@/utils";
+import { after } from "next/server";
 import { Suspense } from "react";
 
 const Test = async ({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) => {
   const { test } = await searchParams;
+  after(() => {
+    console.log("Log in after(), you go into test/test1");
+  });
   await sleep(1000);
   return (
     <div>

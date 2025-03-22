@@ -31,12 +31,12 @@ export default async function PorfolioBanner({ params }: { params: Promise<{ lan
         R | N
       </h2>
       <h1 className={`${styles["banner__bigTitle"]} ${robotoFlexFont.className}`} aria-label="name">
-        RYAN &nbsp;NGUYEN
+        {dict["portfolio.banner.title"]}
       </h1>
       <div className="flex items-center gap-[4rem] pb-[1rem]">
         <div className={styles["banner__line"]}></div>
         <h2 className={`${styles["banner__smalltitle"]} ${robotoFont.className}`} aria-label="job">
-          {dict.portfolio.banner.job}
+          {dict["portfolio.banner.job"]}
         </h2>
         <div className={styles["banner__line"]}></div>
       </div>

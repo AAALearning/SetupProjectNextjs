@@ -11,7 +11,7 @@ export const generateMetadata = async ({ params }: { params: Promise<{ lang: Lan
   return {
     metadataBase: `${process.env.NEXT_PUBLIC_BASE_URL}`,
     title: "Portfoio",
-    description: dict.portfolio.metadata.description,
+    description: dict["portfolio.metadata.description"],
     keywords: ["NextJS", "React", "Web", "Portfolio"],
     alternates: {
       canonical: "/",
@@ -44,7 +44,7 @@ const Porfolio = async ({ params }: { params: Promise<{ lang: Language }> }) => 
     <main className={styles.container}>
       <LangButton />
       <PorfolioBanner params={params} />
-      <PorfolioDetails />
+      <PorfolioDetails params={params} />
     </main>
   );
 };

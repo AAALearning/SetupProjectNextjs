@@ -4,8 +4,11 @@ import React from "react";
 import DetailsSubtitle from "./DetailsSubtitle";
 import { detailsLeftData, detailsRightData } from "@/config/porfolio";
 import DetailsTimeline from "./DetailsTimeline";
+import { getDictionary, Language } from "@/utils/dictionaries";
 
-const PorfolioDetails = () => {
+const PorfolioDetails = async ({ params }: { params: Promise<{ lang: Language }> }) => {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   return (
     <div className={styles.content}>
       <section className={styles["content__left"]}>
@@ -13,7 +16,7 @@ const PorfolioDetails = () => {
           <figure>
             <Image
               src="/portfolio/avatar.png"
-              layout="fill"
+              fill={true}
               alt="avatar"
               style={{ objectFit: "contain" }}
               priority={true}
@@ -24,7 +27,7 @@ const PorfolioDetails = () => {
         </div>
         {detailsLeftData.map((l, i) => (
           <section key={i}>
-            <DetailsSubtitle text={l.key} />
+            <DetailsSubtitle text={dict[l.key]} />
             <ul className="pt-[0.8rem] pb-[1.5rem]">
               {l.value.map((v, j) => (
                 <li className="my-[2rem]" key={j}>
@@ -39,18 +42,17 @@ const PorfolioDetails = () => {
         ))}
       </section>
       <section className={styles["content__right"]}>
-        <DetailsSubtitle text="ABOUT ME" />
+        <DetailsSubtitle text={dict["portfolio.aboutme.name"]} />
         <p className={styles["content__right--aboutme"]} aria-label="description about me">
-          With 5 years of experience as a Frontend Developer (HTML, CSS, JS, ReactJS) and an additional 3 years in
-          Backend Development, I possess a robust skill set that bridges both aspects of web development.
+          {dict["portfolio.aboutme.details"]}
         </p>
         {detailsRightData.map((d, i) => (
           <React.Fragment key={i}>
-            <DetailsSubtitle text={d.key} />
+            <DetailsSubtitle text={dict[d.key]} />
             <DetailsTimeline timelines={d.value} />
           </React.Fragment>
         ))}
-        <DetailsSubtitle text="OTHER" />
+        <DetailsSubtitle text={dict["portfolio.other"]} />
       </section>
     </div>
   );

@@ -1,10 +1,27 @@
 {
-  "portfolio": {
-    "metadata": {
-      "description": "My portfolio"
-    },
-    "banner": {
-      "job": "FULL STACK DEV"
-    }
-  }
+  "portfolio.button.changelang": "Language",
+  "portfolio.metadata.description": "My portfolio",
+  "portfolio.banner.title": "RYAN NGUYEN",
+  "portfolio.banner.job": "FULL STACK DEVELOPER",
+  "portfolio.skills": "SKILLS",
+  "portfolio.languages": "LANGUAGES",
+  "portfolio.aboutme.name": "ABOUT ME",
+  "portfolio.aboutme.details": "With 5 years of experience as a Frontend Developer (HTML, CSS, JS, ReactJS) and an additional 3 years in Backend Development, I possess a robust skill set that bridges both aspects of web development.",
+  "portfolio.workexp": "WORK EXPERIENCE",
+  "portfolio.workexp.phase1.place": "HANOI UNIVERSITY",
+  "portfolio.workexp.phase1.name": "FRONTEND DEVELOPER",
+  "portfolio.workexp.phase1.details.1": "Proficient in the MERN stack acquired through hands-on university projects.",
+  "portfolio.workexp.phase1.details.2": "Developed innovative Web3 applications utilizing Solidity as a Full Stack Developer in final projects.",
+  "portfolio.workexp.phase2.name": "INTERSHIP",
+  "portfolio.workexp.phase2.details.1": "Coding frontend for website: https://nft-app.trava.finance",
+  "portfolio.workexp.phase2.details.2": "Create frontend for many outsource projects using NextJS.",
+  "portfolio.workexp.phase2.details.3": "Create server to crawl data from blockchain.",
+  "portfolio.workexp.phase3.name": "BACKEND DEVELOPER",
+  "portfolio.workexp.phase3.details.1": "Spearheaded backend development utilizing the ASP.NET framework for a high-impact, large-scale project, ensuring robust performance and scalability.",
+  "portfolio.workexp.phase3.details.2": "Designed and implemented SQL Server databases to optimize data management and integrity.",
+  "portfolio.education.name": "EDUCATION",
+  "portfolio.education.phase1.place": "Hanoi University of Science and Technology",
+  "portfolio.education.phase1.title": "BACHELOR",
+  "portfolio.education.phase1.details.1": "Graduated with an excellent degree in Information Technology Engineering.",
+  "portfolio.other": "OTHER"
 }

@@ -6,6 +6,73 @@
   padding: 5px;
   border-radius: 10px;
   z-index: 1;
-  border: 1px solid black;
+  border: 2px solid black;
   min-width: 75px;
 }
+
+.portfolio__langDialog:popover-open {
+  max-width: min(90%, 500px);
+  max-height: 90%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  grid-gap: 10px;
+  grid-auto-rows: min-content;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.portfolio__langDialog::backdrop {
+  background-color: rgba(0,0,0,0.2);
+}
+
+.portfolio__langDialog--item {
+  border: 2px solid black;
+  border-radius: 5px;
+  min-width: 40px;
+  padding: 5px;
+  text-align: center;
+}
+
+.portfolio__langDialog--item-active {
+  background-color: black;
+  color: white;
+}
+
+
+
+/* [popover] {
+  opacity: 0;
+  transform: scaleX(0);
+  font-size: 1.2rem;
+  padding: 10px;
+  transition:
+    opacity 0.7s,
+    transform 0.7s,
+    overlay 0.7s allow-discrete,
+    display 0.7s allow-discrete;
+}
+[popover]:popover-open {
+  opacity: 1;
+  transform: scaleX(1);
+}
+@starting-style {
+  [popover]:popover-open {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
+[popover]::backdrop {
+  background-color: rgb(0 0 0 / 0%);
+  transition:
+    display 0.7s allow-discrete,
+    overlay 0.7s allow-discrete,
+    background-color 0.7s;
+}
+[popover]:popover-open::backdrop {
+  background-color: rgb(0 0 0 / 25%);
+}
+@starting-style {
+  [popover]:popover-open::backdrop {
+    background-color: rgb(0 0 0 / 0%);
+  }
+} */

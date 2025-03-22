@@ -19,7 +19,7 @@ export const bannerData = [
 
 export const detailsLeftData = [
   {
-    key: "SKILLS",
+    key: "portfolio.skills",
     value: [
       {
         name: "Cascading Style Sheets (CSS)",
@@ -52,7 +52,7 @@ export const detailsLeftData = [
     ],
   },
   {
-    key: "LANGUAGES",
+    key: "portfolio.languages",
     value: [
       {
         name: "Vietnamese",
@@ -68,50 +68,44 @@ export const detailsLeftData = [
 
 export const detailsRightData = [
   {
-    key: "WORK EXPERIENCE",
+    key: "portfolio.workexp",
     value: [
       {
-        place: "Hanoi University",
+        place: "portfolio.workexp.phase1.place",
         time: "2020-2024",
         city: "Hanoi",
-        title: "FRONTEND DEV",
-        details: [
-          "Proficient in the MERN stack acquired through hands-on university projects.",
-          "Developed innovative Web3 applications utilizing Solidity as a Full Stack Developer in final projects.",
-        ],
+        title: "portfolio.workexp.phase1.name",
+        details: ["portfolio.workexp.phase1.details.1", "portfolio.workexp.phase1.details.2"],
       },
       {
         place: "Trava",
         time: "2022-2023",
         city: "Hanoi",
-        title: "INTERSHIP",
+        title: "portfolio.workexp.phase2.name",
         details: [
-          "Coding frontend for website: https://nft-app.trava.finance",
-          "Create frontend for many outsource projects by NextJS page router.",
-          "Create server to crawl data from blockchain",
+          "portfolio.workexp.phase2.details.1",
+          "portfolio.workexp.phase2.details.2",
+          "portfolio.workexp.phase2.details.3",
         ],
       },
       {
         place: "Avepoint",
         time: "Dec 2023 - Present",
         city: "Hanoi",
-        title: "BACKEND DEV",
-        details: [
-          "Spearheaded backend development utilizing the ASP.NET framework for a high-impact, large-scale project, ensuring robust performance and scalability.",
-          "Designed and implemented SQL Server databases to optimize data management and integrity.",
-        ],
+        title: "portfolio.workexp.phase3.name",
+        details: ["portfolio.workexp.phase3.details.1", "portfolio.workexp.phase3.details.2"],
       },
     ],
   },
   {
-    key: "EDUCATION",
+    key: "portfolio.education.name",
     value: [
       {
-        place: "Hanoi University of Science and Technology",
+        place: "portfolio.education.phase1.place",
         time: "2024",
         city: "Hanoi",
-        title: "BACHELOR",
-        details: ["Graduated with an excellent degree in Information Technology Engineering."],
+        title: "portfolio.education.phase1.title",
+        details: ["portfolio.education.phase1.details.1"],
       },
     ],
   },

@@ -1,0 +1,28 @@
+version: 1
+checksums:
+  17462cde20b0614eede3bfcb96108fdb:
+    portfolio.button.changelang: 277fd1a41cc237a437cd1d5e4a80463b
+    portfolio.metadata.description: f6ebaa832574b98b010f72af294b4b2d
+    portfolio.banner.title: c6116cd6222d63dd00dc73b688b482f8
+    portfolio.banner.job: c112d266901614e3b26bee0dc307b342
+    portfolio.skills: 158888d8c2f63d0fbe5db8d56df43fbc
+    portfolio.languages: 298eaeedec8aed6a5badfe4f027ac383
+    portfolio.aboutme.name: 86266fa820cb4f6ef8d1719bd5a75639
+    portfolio.aboutme.details: b34ebf01423724895f6ed6a8e822e0a7
+    portfolio.workexp: 5636813d060a8082680f6dc59bfb030b
+    portfolio.workexp.phase1.place: ac5c3ed0600e1307c3e26f7c7d6ca873
+    portfolio.workexp.phase1.name: 1c53a16ebeb47aedaab0b484ca2c0146
+    portfolio.workexp.phase1.details.1: ae335ab114a0148ed826db2f8e1159d9
+    portfolio.workexp.phase1.details.2: 6cf590000a57fcef5dcb90d7f6f71899
+    portfolio.workexp.phase2.name: f806b326ac77086b4b7de20ad2eb4703
+    portfolio.workexp.phase2.details.1: 847049a6106f4a56f92e94f92a425b5c
+    portfolio.workexp.phase2.details.2: bc2bda8b9c1bd3fbee45e15ecddaf718
+    portfolio.workexp.phase2.details.3: 7a6650757a1ed0d8c987e3d93a2d3de2
+    portfolio.workexp.phase3.name: a24300c1b43c5d5207a7533fffd5ee2b
+    portfolio.workexp.phase3.details.1: 028b89e9643ac69742dfec81fd1cb742
+    portfolio.workexp.phase3.details.2: 64b0b07d6e2e6b8dc383453051acd5c4
+    portfolio.education.name: 229e8a53d81948fc05a0defa5bf0c319
+    portfolio.education.phase1.place: 727777d81f6118d00dd56f2ef765bb2e
+    portfolio.education.phase1.title: 29069d4b6df14d86203a908313321336
+    portfolio.education.phase1.details.1: 7f736516b829da692df715c16913297e
+    portfolio.other: d54d950e3c2eee15eccd58910b326bbf

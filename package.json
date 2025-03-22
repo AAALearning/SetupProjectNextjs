@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:staged": "lint-staged",
-    "prepare": "husky"
+    "prepare": "husky",
+    "i18n": "npx lingo.dev@latest i18n"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mdx}": "eslint --fix",

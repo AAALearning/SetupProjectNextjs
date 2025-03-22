@@ -37,7 +37,7 @@ const TestForm = () => {
 
   return (
     <>
-      <Form action={submitAction}>
+      <Form action={submitAction} className="[&_input]:border-solid [&_input]:border-[2px] [&_input]:border-black">
         <input type="text" name="name" defaultValue={state?.formField?.name} />
         <input type="number" name="age" defaultValue={state?.formField?.age ?? undefined} />
         <button disabled={isPending} type="submit">

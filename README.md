@@ -4,7 +4,7 @@ Setup eslint, prettier, husky, commitlint, lint-staged.
 Setup css reset, font-size
 
 Dùng font
-Set i18n, ta cho vào cookie để server lấy thay local storage, dùng debounce kết hợp useOptimistic
+Set i18n
 Set multiple middleware
 Dùng view transition api
 Connect với db supabase, dùng drizzle orm để tương tác với db
@@ -13,10 +13,14 @@ Dùng server actions
 Dùng redirect, rewrites (đổi page mà url giữ nguyên), đổi url mà k đổi page, prefetch
 Dùng dynamic import
 Dùng permanentRedirect
-Dùng layout, template, default, slots, loading, twitter-image.png, opengraph-image.alt.txt
+Dùng layout, template, default, slots, loading, twitter-image.png, opengraph-image.alt.txt, opengraph-image.tsx
 Dùng react compiler
 Dùng Form, useActionState
 Dùng route handler
+Dùng instrumentation, after
+Dùng group route, dynamic routes
+
+Dùng dialog popover
 
 
 
@@ -36,6 +40,9 @@ Prefix dark: có thể custom k còn theo prefers-color-scheme. VD dùng @custom
 
 --> Lỗi css cú pháp mới và @apply của tailwind, phải fix với postcss mới bundle được:
 Cài 2 package thêm: npm install -D postcss-preset-env postcss-flexbugs-fixes
+
+--> Có first: focus: hover: active: dark:md:hover:bg-fuchsia-600
+[&_input] => mọi tag input con
 
 
 
@@ -99,5 +106,37 @@ Khi đó client hiện tại sẽ re-render luôn, các client khác sẽ bị h
 - Bỏ --turbopack. Nó có tốc độ build cực nhanh, nhưng bundle size k giảm, thường chỉ dùng cho development. Đôi khi lỗi phải bỏ đi mới dùng được => k nên
 - Dùng <style jsx> thì chạy được.
 
+
+
+-> import.meta.url trả về url tuyệt đối của file hiện tại
+process.cwd() url relative đến dự án hiện tại. VD: /Users/mac/Desktop/MyLaptop/SetupProjectNextjs
+
+
+
+-> Setup i18n:
+- Dùng @replexica/react tự dịch i18n bằng AI.
+- Language lưu trong cookie chỉ đổi được ở server, client muốn đổi phải call server function. Dùng debounce tự tạo optimistics tối ưu.
+- Server và client truy cập langs qua params và useParams. Nhưng component con nested sâu thì truyền từ Page phức tạp.
+Giải pháp là server component lấy từ cookies, đảm bảo cookies và params luôn update cùng giá trị là được.
+- Đảm bảo i18n gọi ở middleware edge runtime thì k dùng fs, list languages fix cứng ở 1 file và import vào thôi. File chỉ import ở server comp mới được dùng fs.
+- i18n data lấy ở cả server và client comp. Nếu import sync từng file json vào thì FE sẽ tải quá nhièu và viết bị dài khi có quá nhiều langs. 
+Giải pháp là dùng dynamic import như bth cho server component.
+Client component truyền dictionaries qua props từ server hoặc dynamic import nhưng bị phức tạp. Tốt nhất là dùng Context global và hook useTranslation cho client comp. Chú ý Context là client component nhưng chứa server comp qua { children } được.
+- Khi set cookies, phải set vào response.cookies thì mới set vào browser, chứ request.cookies set k có tác dụng.
+Điều đb là middleware chạy xong hết, cả NextResponse.next() rồi return xong thì server component mới được xử lý render. Nên đổi response.cookie trong middleware sẽ đảm bảo server component lấy cookies luôn có trường đó.
+- html có thuộc tính lang giúp cho SEO. Chú ý file layout có ở cả cha và con dùng để set giá trị chung cho tag html head body.
+head ở con sẽ được append vào cha, body ở con nest trong cha, nhưng tag <html> k ổn. Bất cứ page nào cũng phải có 1 tag <html>, con và cha nếu cùng có <html> thì phải giống nhau, nếu khác nhau sẽ bị lỗi hydrate. Do đó buộc set lang cho html, ta lấy từ cookie và set ngay từ cha
+
+
+
+-> Lỗi dialog: thẻ dialog 100% sẽ theo màn hình, thẻ div ngay trong dialog 100% sẽ theo content trong khi đáng lẽ nó phải theo thẻ cha nó.
+
+Safari:
+word-spacing k hoạt động
+Thêm cho grid là grid-auto-rows: min-content;
+
+
+
+-> 
 
 
