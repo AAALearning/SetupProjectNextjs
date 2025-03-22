@@ -12,7 +12,7 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image() {
-  const bytesizedBuffer = await readFile(join(process.cwd(), "src/assets/fonts/Montserrat_variablefonts.ttf"));
+  const bytesizedBuffer = await readFile(join(process.cwd(), "src/assets/fonts/Bytesized-Regular.ttf"));
 
   return new ImageResponse(
     (

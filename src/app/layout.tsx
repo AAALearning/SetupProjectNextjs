@@ -2,6 +2,10 @@ import Script from "next/script";
 import "./globals.css";
 import { cookies } from "next/headers";
 
+export const metadata = {
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
+};
+
 export default async function RootLayout({
   children,
 }: Readonly<{

@@ -9,7 +9,6 @@ export const generateMetadata = async ({ params }: { params: Promise<{ lang: Lan
   const { lang } = await params;
   const dict = await getDictionary(lang);
   return {
-    metadataBase: `${process.env.NEXT_PUBLIC_BASE_URL}`,
     title: "Portfoio",
     description: dict["portfolio.metadata.description"],
     keywords: ["NextJS", "React", "Web", "Portfolio"],

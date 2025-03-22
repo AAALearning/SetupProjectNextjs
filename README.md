@@ -19,6 +19,7 @@ Dùng Form, useActionState
 Dùng route handler
 Dùng instrumentation, after
 Dùng group route, dynamic routes
+Export metadata
 
 Dùng dialog popover
 
