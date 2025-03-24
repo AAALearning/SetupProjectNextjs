@@ -6,6 +6,7 @@ import ShowSearchParams from "@/components/test/ShowSearchParams";
 import TestForm from "@/components/test/TestForm";
 import ViewTransitionTest from "@/components/test/ViewTransitionTest";
 import { sleep } from "@/utils";
+import Link from "next/link";
 import { after } from "next/server";
 import { Suspense } from "react";
 
@@ -35,6 +36,8 @@ const Test = async ({ searchParams }: { searchParams: Promise<{ [key: string]: s
       <DetailContent />
       <hr />
       <TestForm />
+      <hr />
+      <Link href="/home">Go to home</Link>
     </div>
   );
 };
