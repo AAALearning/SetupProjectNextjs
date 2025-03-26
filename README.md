@@ -18,9 +18,10 @@ Dùng react compiler
 Dùng Form, useActionState
 Dùng route handler
 Dùng instrumentation, after
-Dùng group route, dynamic routes
+Dùng group route, dynamic routes, private route
 Export metadata
 Dùng intercept route
+draftMode
 
 Dùng dialog popover
 

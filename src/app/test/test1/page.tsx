@@ -1,6 +1,7 @@
 import ChangeUrl from "@/components/test/ChangeUrl";
 import DBTest from "@/components/test/DBTest";
 import DetailContent from "@/components/test/DetailContent";
+import DraftModeTest from "@/components/test/DraftModeTest";
 import DynamicTest from "@/components/test/DynamicTest";
 import ShowSearchParams from "@/components/test/ShowSearchParams";
 import TestForm from "@/components/test/TestForm";
@@ -18,6 +19,7 @@ const Test = async ({ searchParams }: { searchParams: Promise<{ [key: string]: s
   await sleep(1000);
   return (
     <div>
+      <hr />
       <Suspense fallback={<p>Loading dynamic test...</p>}>
         <DynamicTest />
       </Suspense>
@@ -38,6 +40,8 @@ const Test = async ({ searchParams }: { searchParams: Promise<{ [key: string]: s
       <TestForm />
       <hr />
       <Link href="/home">Go to home</Link>
+      <hr />
+      <DraftModeTest />
     </div>
   );
 };
