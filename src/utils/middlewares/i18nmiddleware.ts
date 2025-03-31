@@ -16,16 +16,16 @@ function getLocale(request: NextRequest) {
 }
 
 export default function withI18nMiddleware(
-  next: (request: NextRequest, event: NextFetchEvent) => NextResponse
-): (request: NextRequest, event: NextFetchEvent) => NextResponse {
-  return (request: NextRequest, event: NextFetchEvent) => {
+  next: (request: NextRequest, event: NextFetchEvent) => Promise<NextResponse>
+): (request: NextRequest, event: NextFetchEvent) => Promise<NextResponse> {
+  return async (request: NextRequest, event: NextFetchEvent) => {
     const { pathname } = request.nextUrl;
     if (!isI18nUrl(pathname)) {
       return next(request, event);
     }
     const localeInPathName = locales.find((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
     if (localeInPathName) {
-      const response = next(request, event);
+      const response = await next(request, event);
       response.cookies.set("lang", localeInPathName, {
         sameSite: "strict",
         maxAge: 31536000,

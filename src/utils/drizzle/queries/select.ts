@@ -1,17 +1,16 @@
 import { asc, count, eq, getTableColumns } from "drizzle-orm";
 import { db } from "../index";
-import { postsTable, usersTable } from "../schema";
+import { postsTable, usersTable, SelectUser } from "../schema";
 
 export async function getUsersWithPostsCount(
   page = 1,
-  pageSize = 5
+  pageSize = 20
 ): Promise<
-  Array<{
-    postsCount: number;
-    id: number;
-    name: string;
-    email: string;
-  }>
+  Array<
+    {
+      postsCount: number;
+    } & SelectUser
+  >
 > {
   return db
     .select({

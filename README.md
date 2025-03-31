@@ -24,6 +24,8 @@ Dùng intercept route
 draftMode
 
 Dùng dialog popover
+Dùng Docker
+Custom authentication
 
 
 
@@ -71,16 +73,18 @@ Thêm a11y.
 Để update db, cứ viết schema r generate sẽ đè lên. DB k có trong schema sẽ bị xoá, nếu có data lost sẽ đưa ra cảnh báo. 
 Nếu muốn tạo db test các thứ migration thì phải tạo 1 db riêng và sửa connection string cho vào env.development thôi.
 
-npx drizzle-kit generate => sinh lệnh đổi db, vào custom.
+npx drizzle-kit generate => sinh lệnh đổi db, ghi lịch sử đổi vào thư mục migrations
 npx drizzle-kit migrate => chạy migrate trên drizzle
-npx drizzle-kit push => update migrate từ drizzle lên cloud. Đổi url từ 6543 thành 5432 nếu lỗi
+npx drizzle-kit push => update migrate từ drizzle lên cloud trực tiếp. Đổi url từ 6543 thành 5432 nếu lỗi
 npx drizzle-kit studio => chạy studio cho bất cứ db nào. Dùng kèm loadEnvConfig vì dùng process.env.DBURL ngoài nextjs runtime.
 URL: https://orm.drizzle.team/docs/tutorials/drizzle-with-supabase
-URL master drizzle: https://www.youtube.com/watch?v=7-NZ0MlPpJA&t=523s
+URL master drizzle***: https://www.youtube.com/watch?v=7-NZ0MlPpJA&t=523s
 
 Lưu ý là client gọi hàm trực tiếp từ server thì hàm đó phải k được dùng các package phía server, vì nếu dùng sẽ k thể import vào client trực tiếp, vì client k thể import package nodejs server.
 Drizzle cần dùng postgre và fs là package phía server, phải viết trong file "server only" và k thể import từ client. Buộc phải nhét vào server actions thì mới độc lập gọi được ở client.
 Khi update db xong, gọi revalidatePath, nó sẽ apply changes mà k reload pages, nó có re-render lại toàn bộ server component liên quan hoặc có khả năng liên quan thôi.
+
+Dù dùng reference key để liên kết 2 bảng, nhưng vẫn cần định nghĩa relations. Nó k có ích gì trong db nhưng sẽ báo drizzle biết để truy vấn dễ dàng hơn với with
 
 
 
@@ -140,6 +144,18 @@ Thêm cho grid là grid-auto-rows: min-content;
 
 
 
--> 
+-> Dùng docker minimize nhất có thể cho development:
+Chạy "make up-d" thấy chưa có image sẽ build image
+Build image sẽ tạo ra 1 image trống, copy package.json vào image, chạy "npm install" trong image. Vậy là trong image có package.json và node_modules.
+Chưa có container sẽ tạo container từ image
+Tạo volumn dùng thư mục . ở host cho /app, trong container vẫn giữ nguyên chỉ có package.json, còn node_modules là anonymous volumn k bị ảnh hưởng.
+Chạy container sẽ mở ports và chạy CMD
+Dừng container sẽ ngừng bind và k ánh xạ port nữa. Trong toàn bộ quá trình, container chỉ có package.json và node_modules
+
+
+
+-> Custom authentication, dùng redis upstash
+Chú ý middleware không dùng được nodejs runtime crypto. Nên nếu muốn dùng ở middleware, k được mã hoá hay gì cả, k được tái sử dụng utility function với server comp bth.
+Do edge có thể import ở node module mà node thì k được nên ta chia 1 file chứa các hàm chỉ có ở node module là được
 
 
