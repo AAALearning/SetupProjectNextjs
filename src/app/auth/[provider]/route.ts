@@ -1,18 +1,11 @@
-// import { getOAuthClient } from "@/auth/core/oauth/base"
-// import { createUserSession } from "@/auth/core/session"
-// import { db } from "@/drizzle/db"
-// import {
-//   OAuthProvider,
-//   oAuthProviders,
-//   UserOAuthAccountTable,
-//   UserTable,
-// } from "@/drizzle/schema"
-// import { eq } from "drizzle-orm"
-// import { cookies } from "next/headers"
-// import { redirect } from "next/navigation"
 import { redirect } from "next/navigation";
 import { NextRequest } from "next/server";
-// import { z } from "zod"
+import { getOAuthClient, OAuthProvider } from "../actions";
+import { cookies } from "next/headers";
+import { db } from "@/utils/drizzle";
+import { eq } from "drizzle-orm";
+import { userOAuthAccountTable, usersTable } from "@/utils/drizzle/schema";
+import { createUserSession } from "@/utils/auth/nodemodule";
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ provider: string }> }) {
   const { provider: rawProvider } = await params;
@@ -24,53 +17,47 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     redirect(`/auth/signin?oauthError=${encodeURIComponent("Failed to connect. Please try again.")}`);
   }
 
-  // const oAuthClient = getOAuthClient(provider);
-  // try {
-  //   const oAuthUser = await oAuthClient.fetchUser(code, state, await cookies())
-  //   const user = await connectUserToAccount(oAuthUser, provider)
-  //   await createUserSession(user, await cookies())
-  // } catch (error) {
-  //   console.error(error)
-  //   redirect(
-  //     `/sign-in?oauthError=${encodeURIComponent(
-  //       "Failed to connect. Please try again."
-  //     )}`
-  //   )
-  // }
-
-  // redirect("/")
+  const oAuthClient = getOAuthClient(rawProvider as OAuthProvider);
+  try {
+    const oAuthUser = await oAuthClient.fetchUser(code, state, await cookies());
+    const user = await connectUserToAccount(oAuthUser, rawProvider as OAuthProvider);
+    await createUserSession(user, await cookies());
+  } catch (error) {
+    console.error(error);
+    redirect(`/auth/signin?oauthError=${encodeURIComponent("Failed to connect. Please try again.")}`);
+  }
+  redirect("/auth/private");
 }
 
-// function connectUserToAccount(
-//   { id, email, name }: { id: string; email: string; name: string },
-//   provider: OAuthProvider
-// ) {
-//   return db.transaction(async trx => {
-//     let user = await trx.query.UserTable.findFirst({
-//       where: eq(UserTable.email, email),
-//       columns: { id: true, role: true },
-//     })
+function connectUserToAccount(
+  { id, email, name }: { id: string; email: string; name: string },
+  provider: OAuthProvider
+) {
+  return db.transaction(async (trx) => {
+    let user = await trx.query.usersTable.findFirst({
+      where: eq(usersTable.email, email),
+      columns: { id: true, role: true },
+    });
+    if (user == null) {
+      const [newUser] = await trx
+        .insert(usersTable)
+        .values({
+          email: email,
+          name: name,
+        })
+        .returning({ id: usersTable.id, role: usersTable.role });
+      user = newUser;
+    }
 
-//     if (user == null) {
-//       const [newUser] = await trx
-//         .insert(UserTable)
-//         .values({
-//           email: email,
-//           name: name,
-//         })
-//         .returning({ id: UserTable.id, role: UserTable.role })
-//       user = newUser
-//     }
+    await trx
+      .insert(userOAuthAccountTable)
+      .values({
+        provider,
+        providerAccountId: id,
+        userId: user.id,
+      })
+      .onConflictDoNothing();
 
-//     await trx
-//       .insert(UserOAuthAccountTable)
-//       .values({
-//         provider,
-//         providerAccountId: id,
-//         userId: user.id,
-//       })
-//       .onConflictDoNothing()
-
-//     return user
-//   })
-// }
+    return user;
+  });
+}
