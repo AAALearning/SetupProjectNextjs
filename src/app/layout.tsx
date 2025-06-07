@@ -1,6 +1,7 @@
 import Script from "next/script";
 import "./globals.css";
 import { cookies } from "next/headers";
+import Providers from "./providers";
 
 export const metadata = {
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`),
@@ -19,7 +20,9 @@ export default async function RootLayout({
         {/* Phải dùng Script tránh lỗi */}
         {/* <Script crossOrigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js"></Script> */}
       </head>
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

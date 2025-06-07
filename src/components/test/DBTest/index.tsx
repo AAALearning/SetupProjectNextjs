@@ -3,19 +3,23 @@ import CreateDataButton from "./CreateDataButton";
 
 // Call db
 const DBTest = async () => {
-  const users = await getDBData();
-  return (
-    <>
-      <CreateDataButton />
-      {users.map((u) => (
-        <div key={u.id}>
-          <p>
-            {u.id} - {u.name} - {u.email}
-          </p>
-        </div>
-      ))}
-    </>
-  );
+  try {
+    const users = await getDBData();
+    return (
+      <>
+        <CreateDataButton />
+        {users.map((u) => (
+          <div key={u.id}>
+            <p>
+              {u.id} - {u.name} - {u.email}
+            </p>
+          </div>
+        ))}
+      </>
+    );
+  } catch {
+    return <>Error gettings usser from db</>;
+  }
 };
 
 export default DBTest;

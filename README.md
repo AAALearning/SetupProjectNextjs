@@ -28,6 +28,8 @@ Dùng Docker
 Custom authentication
 Dùng feature flag, vercel flag sdk
 Dùng vercel kv lib
+Handle error
+react-query streaming prefetch server
 
 
 
