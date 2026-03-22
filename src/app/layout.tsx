@@ -14,7 +14,7 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies();
   return (
-    <html lang={cookieStore.get("lang")?.value ?? "en"}>
+    <html lang={cookieStore.get("lang")?.value ?? "en"} suppressHydrationWarning>
       <head>
         <link rel="preload" as="image" href="../favicon.ico" />
         {/* Phải dùng Script tránh lỗi */}

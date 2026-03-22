@@ -33,6 +33,10 @@ react-query streaming prefetch server
 
 
 
+-> Luôn dùng suppressHydrationWarning ở tag html, nó chỉ cản hydration error ở 1 level thôi.
+
+
+
 -> Note các bước code UI portfolio:
 Chia router. Chia config ra file riêng. Chia theo chức năng / module.s
 Component dài viết quá 1 lần hoặc component ngắn viết nhiều lần thì tách riêng ra, hoặc component nested quá sâu, hoặc ảnh icon thì chia. 

@@ -22,19 +22,11 @@ export const detailsLeftData = [
     key: "portfolio.skills",
     value: [
       {
-        name: "Cascading Style Sheets (CSS)",
+        name: "HTML / CSS / SCSS",
         level: 100,
       },
       {
-        name: "MERN Stack",
-        level: 80,
-      },
-      {
-        name: "Github",
-        level: 100,
-      },
-      {
-        name: "HyperText Markup Language (HTML)",
+        name: "NodeJS",
         level: 100,
       },
       {
@@ -46,8 +38,20 @@ export const detailsLeftData = [
         level: 80,
       },
       {
-        name: "ASP.NET",
+        name: "C# / ASP.NET",
         level: 80,
+      },
+      {
+        name: "MongoDB",
+        level: 90,
+      },
+      {
+        name: "SQL",
+        level: 80,
+      },
+      {
+        name: "Redis",
+        level: 90,
       },
     ],
   },
