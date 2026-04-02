@@ -1,0 +1,13 @@
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+SUPABASE_URL=https://cwmutlxvnxseoizzgolm.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3bXV0bHh2bnhzZW9penpnb2xtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE1MTkyMDQsImV4cCI6MjA1NzA5NTIwNH0.aXIVKqrh6TCH0GK2ohnY7-uIGMMuLWuHKVPPJo4BQo8
+DATABASE_URL="postgresql://postgres.cwmutlxvnxseoizzgolm:hieucuopbien123!!@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"
+REDIS_URL=https://proud-calf-15264.upstash.io
+REDIS_TOKEN=ATugAAIjcDE3ZWFhNDVjNjM0NDU0ZjMxOThiYTA4N2FlYmJhMTliMnAxMA
+
+KV_REST_API_URL=https://proud-calf-15264.upstash.io
+KV_REST_API_TOKEN=ATugAAIjcDE3ZWFhNDVjNjM0NDU0ZjMxOThiYTA4N2FlYmJhMTliMnAxMA
+
+OAUTH_REDIRECT_URL_BASE=http://localhost:3000/auth/
+DISCORD_CLIENT_ID=1356289059923689492
+DISCORD_CLIENT_SECRET=fADLLXl-x9bkOhN13D5aX8tAfyVG5j0Z

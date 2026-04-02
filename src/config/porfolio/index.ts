@@ -1,18 +1,18 @@
 export const bannerData = [
   {
     icon: "location",
-    text: "Hai Ba Trung, Ha Noi, 100000, Viet Nam",
+    text: "Khuong Dinh, Thanh Xuan, Hanoi, Vietnam",
   },
   {
     icon: "phone",
-    text: "+84382776645",
+    text: "+84 382 776 645",
   },
   {
     icon: "mail",
-    text: "hieucuopbien123@gmail.com",
+    text: "ryanguyen181@gmail.com",
   },
   {
-    icon: "link",
+    icon: "github",
     text: "github.com/hieucuopbien123",
   },
 ];
@@ -26,6 +26,10 @@ export const detailsLeftData = [
         level: 100,
       },
       {
+        name: "Javascript / Typescript",
+        level: 100,
+      },
+      {
         name: "NodeJS",
         level: 100,
       },
@@ -34,24 +38,28 @@ export const detailsLeftData = [
         level: 100,
       },
       {
-        name: "NextJS",
-        level: 80,
+        name: "SQL",
+        level: 100,
       },
       {
         name: "C# / ASP.NET",
-        level: 80,
+        level: 100,
       },
       {
         name: "MongoDB",
         level: 90,
       },
       {
-        name: "SQL",
+        name: "NextJS",
         level: 80,
       },
       {
         name: "Redis",
-        level: 90,
+        level: 80,
+      },
+      {
+        name: "Docker",
+        level: 80,
       },
     ],
   },
@@ -86,18 +94,18 @@ export const detailsRightData = [
         time: "2022-2023",
         city: "Hanoi",
         title: "portfolio.workexp.phase2.name",
-        details: [
-          "portfolio.workexp.phase2.details.1",
-          "portfolio.workexp.phase2.details.2",
-          "portfolio.workexp.phase2.details.3",
-        ],
+        details: ["portfolio.workexp.phase2.details.1", "portfolio.workexp.phase2.details.2"],
       },
       {
         place: "Avepoint",
         time: "Dec 2023 - Present",
         city: "Hanoi",
         title: "portfolio.workexp.phase3.name",
-        details: ["portfolio.workexp.phase3.details.1", "portfolio.workexp.phase3.details.2"],
+        details: [
+          "portfolio.workexp.phase3.details.1",
+          "portfolio.workexp.phase3.details.2",
+          "portfolio.workexp.phase3.details.3",
+        ],
       },
     ],
   },
